@@ -31,6 +31,7 @@ int main()//main function
 		switch (selection) 
 		{
 		case 0:
+			cout << endl;
 			cout << "You have quit the Airline Reservation System" << endl;
 			system("pause");
 			return 0;
@@ -114,9 +115,7 @@ int main()//main function
 		cout << "\t\t 6) User Ticket Information" << endl;
 		cout << "\t\t 7) Cancel Ticket" << endl;
 		cout << "\t\t 0) Quit" << endl;
-		cout << "\n Please enter your choice:";
-		cout << endl;
-		cout << "---> ";
+		cout << "\n \t\tPlease enter your choice: ";
 
 		cin >> selection;
 
