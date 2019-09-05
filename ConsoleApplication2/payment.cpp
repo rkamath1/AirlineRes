@@ -21,7 +21,7 @@ namespace AirlineRes
 			cin >> date;
 			cout << "\nEnter PIN: ";
 			cin >> cvv;
-			cout << "\nTransaction Successful\n";
+			cout << "\nCongratulations! Your ticket has been booked!\n";
 			break;
 		case 2://condition
 			cout << "\nEnter card no.: ";
@@ -30,7 +30,7 @@ namespace AirlineRes
 			cin >> date;
 			cout << "\nEnter CVV No.: ";
 			cin >> cvv;
-			cout << "\nTransaction Successful\n";
+			cout << "\nCongratulations! Your ticket has been booked!\n";
 			break;
 		case 3://condition
 			cout << "Banks Available: \1.Wells Fargo(1) \2.Bank of America(2) \3.Chase(3)";
@@ -55,7 +55,7 @@ namespace AirlineRes
 			cin >> user_id;
 			cout << "\nEnter password: ";
 			cin >> password;
-			cout << "\nTransaction Successful\n";
+			cout << "\nCongratulations! Your ticket has been booked!\n";
 			break;
 		default://condition
 			cout << "\nWrong input entered.\nTry again\n\n";

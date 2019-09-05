@@ -10,8 +10,8 @@ namespace AirlineRes
 	void passenger::p_detail()//function declaration and definition
 	{	
 		select_flight();//function call	
-		cout << "\nEnter Date Of Journey(MMDDYYYY)." << "Please enter a valid date." << endl;
-		cin >> bookTicket::doj;
+		cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+		cin >> bookTicket::mm >> bookTicket::dd >> bookTicket::yyyy;
 		cout << "\n\n\nEnter passenger details";
 		cout << "\nFirst Name: ";
 		cin >> f_name;
@@ -53,13 +53,13 @@ namespace AirlineRes
 		cout << "Route: " << route << endl;
 		cout << "Airline: " << airline << endl;
 		cout << "Name: " << f_name << " " << l_name << endl;
-		cout << "Date of Journey: " << doj << endl;
+		cout << "Date of Journey: " << mm << "/" << dd << "/" << yyyy << endl;
 		cout << "Departure Time: " << departureTime << endl;
 		cout << "Arrival Time: " << arrivalTime << endl;
 		cout << "Ticket Price: " << price << endl;
 
 		if (seatNumber == 0)
-			cout << "Seat not yet reserved" << endl;
+			cout << "SEAT NOT YET RESERVED" << endl;
 		else
 			cout << "Seat No.: " << seatNumber << endl;
 		

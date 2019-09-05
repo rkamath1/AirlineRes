@@ -145,7 +145,7 @@ int main()//main function
 			else
 			{
 				p.dispTicketInfo();//display details
-				cout << "\nYour above ticket has been cancelled:\n" << "Ticket Amount is being refunded\n";
+				cout << "\nYour above ticket has been cancelled\n" << "Ticket Amount is being refunded\n";
 				f++;//incrementing f if pnr found
 			}
 			fout.read((char *)&p, sizeof(p));//reading another record from file
