@@ -5,6 +5,6 @@
  
  This system was developed using C++ Programming Language
  
- ### Click below to watch a video Demo
+ ### Click below to watch a Video Demo
  
  [![Watch the video](https://github.com/rkamath1/AirlineRes/blob/master/menu.png)](https://youtu.be/eIMV85-ckko)
