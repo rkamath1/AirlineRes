@@ -153,8 +153,10 @@ namespace AirlineRes
 		int selection;
 
 		cout << endl;
-		cout << "                                      Select a Route No." << endl;
-		cout << "----------------------------------------------------------------------------------------------------" << endl;
+		cout << "********************************************************************************************" << endl;
+		cout << "***                            WELCOME TO TICKET BOOKING SYSTEM                          ***" << endl;
+		cout << "***                              Select a Route No. to Begin                             ***" << endl;
+		cout << "********************************************************************************************" << endl;
 		cout << "Route Desc: \tRoute No.\tAirline:     \tDeparture:\tArrival:\tPrice:\n";
 		cout << "\1.SEA to LAX\t     (1)\tDelta Air      \t10:00\t\t13:00\t\t$600.00\n";
 		cout << "\2.SEA to SFO\t     (2)\tUnited Air     \t14:00\t\t16:30\t\t$650.00\n";

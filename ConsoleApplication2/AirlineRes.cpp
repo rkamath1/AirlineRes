@@ -35,57 +35,52 @@ int main()//main function
 			cout << "You have quit the Airline Reservation System" << endl;
 			system("pause");
 			return 0;
-		case 1: //book a flight
+		case 1: //Display Flight Schedule
+			ticket.displayFlightSched();
+			cout << "\n\n";
+			system("pause");
+			break;
+		case 2:	//Flight Details	
+			ticket.flight_detail();
+			cout << "\n";
+			system("pause");
+			break;
+		case 3: //book a flight
 			system("CLS");			
 			pass.setTicketNo();
 			pass.p_detail();//function calls
 			pass.gender_check();
 			pay.pay_detail();
-			pass.dispTicketInfo();
+			cout << "\n";
 			createfile(pass);//call to create file
 			system("pause");
-			break;						
-		case 2: //Reserve a seat			
-			system("CLS");
-			cout << "Please enter your ticket no.:" << endl;
-			cin >> n;
-			reserveSeat(n);
-			cout << "\n\n";
-			system("pause");
-			break;
-		case 3: //Display Flight Schedule
-			system("CLS");
-			ticket.displayFlightSched();
-			cout << "\n\n";
-			system("pause");
-			break;			
+			break;	
 		case 4:	//Display Passenger info		
-			system("CLS");
-			cout << "Please enter your ticket no.:" << endl;
+			cout << "\n\nPlease enter your ticket no.: ";
 			cin >> n;
 			displayPassengerInfo(n);
-			cout << "\n\n";
+			cout << "\n";
 			system("pause");
 			break;
-		case 5:	//Flight Details	
-			ticket.flight_detail();
-			cout << "\n\n";
-			system("pause");
-			break;
-		case 6:	//Display ticket information		
-			system("CLS");
-			cout << "Please enter your ticket no.:" << endl;
+		case 5:	//Display ticket information
+			cout << "\n\nPlease enter your ticket no.: ";
 			cin >> n;
 			checkticket(n);
-			cout << "\n\n";
+			cout << "\n";
+			system("pause");
+			break;
+		case 6: //Reserve a seat			
+			cout << "\n\nTo reserve a seat, please enter your ticket no.: ";
+			cin >> n;
+			reserveSeat(n);
+			cout << "\n";
 			system("pause");
 			break;
 		case 7:	//Cancel Ticket		
-			system("CLS");
-			cout << "Please enter your ticket no.:" << endl;
+			cout << "\n\nPlease enter the ticket no. to be cancelled: ";
 			cin >> n;
 			cancelticket(n);//function call for domestic booking cancellation
-			cout << "\n\n";
+			cout << "\n";
 			system("pause");
 			break;
 		default:
@@ -107,12 +102,12 @@ int main()//main function
 		cout << "\t   <><><><><><><><><><><><><><><><><><><><><><><>\n";
 		cout << "\t   Book your flight tickets at affordable prices!" << endl;
 		cout << "\t   <><><><><><><><><><><><><><><><><><><><><><><>" << endl;
-		cout << "\t\t 1) Book A Flight" << endl;
-		cout << "\t\t 2) Reserve A Seat" << endl;
-		cout << "\t\t 3) Flight Schedule" << endl;
+		cout << "\t\t 1) Display Flight Schedule" << endl;
+		cout << "\t\t 2) Flight Details" << endl; 
+		cout << "\t\t 3) Book A Flight" << endl;
 		cout << "\t\t 4) Display Passenger Info" << endl;
-		cout << "\t\t 5) Flight Details" << endl;
-		cout << "\t\t 6) User Ticket Information" << endl;
+		cout << "\t\t 5) Display Ticket Information" << endl; 
+		cout << "\t\t 6) Reserve A Seat" << endl;
 		cout << "\t\t 7) Cancel Ticket" << endl;
 		cout << "\t\t 0) Quit" << endl;
 		cout << "\n \t\tPlease enter your choice: ";
