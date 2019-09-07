@@ -7,11 +7,17 @@ using namespace std;
 
 namespace AirlineRes
 {
+	void passenger::setSeatNumber(int seatNo)
+	{
+		seatNumber = seatNo;
+	}
+	int passenger::getSeatNumber()
+	{
+		return seatNumber;
+	}
+
 	void passenger::p_detail()//function declaration and definition
 	{	
-		select_flight();//function call	
-		cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
-		cin >> bookTicket::mm >> bookTicket::dd >> bookTicket::yyyy;
 		cout << "\n\n\nEnter passenger details";
 		cout << "\nFirst Name: ";
 		cin >> f_name;
@@ -45,6 +51,20 @@ namespace AirlineRes
 		return gender;
 	}
 
+	int passenger::getTicket()
+	{
+		int choice = select_flight();
+		if (choice > 0 && choice < 8)
+		{
+			p_detail();
+			gender_check();
+			payment pay;
+			pay.pay_detail();
+			cout << "Your ticket number is: " << getTicketNo();
+			cout << "\n";
+		}
+		return choice;
+	}
 
 	void passenger::dispTicketInfo()//function to display ticket details
 	{
@@ -80,9 +100,11 @@ namespace AirlineRes
 		cout << "Age:" << age << endl;
 	}
 
-	void passenger::reserve_a_seat() // function to reserve a seat
+	int passenger::reserve_a_seat() // function to reserve a seat
 	{
-		int selection;
+		char selection;
+		int chosen = 0;
+		char choice;
 
 		cout << endl;
 		cout << "Select a Seat type" << endl;
@@ -90,61 +112,67 @@ namespace AirlineRes
 		cout << "1. Window Seat" << endl;
 		cout << "2. Aisle Seat" << endl;
 		cout << "3. Other Seat" << endl;
+		cout << "0. Exit" << endl;
 		cout << endl;
 		cout << "\n Please enter your choice:";
 		cout << "---> ";
 
 		cin >> selection;
+		int sel = (int)selection - (int)48;
 
-		switch (selection) // switch case
+		switch (sel) // switch case
 		{
+		case 0:
+			cout << "You Have Exited Seat Reservation" << endl;
+			break;
 		case 1://window seat
 
 			cout << "\nSeats Available:" << endl;
 			v1 = rand() % 50;         // v1 in the range 0 to 49
 			v2 = rand() % 50;         // v2 in the range 0 to 49
 			v3 = rand() % 50;         // v3 in the range 0 to 49
-			
-			sprintf_s(s1, "%d", v1);			
-			sprintf_s(s2, "%d", v2);			
+
+			sprintf_s(s1, "%d", v1);
+			sprintf_s(s2, "%d", v2);
 			sprintf_s(s3, "%d", v3);
 
 			cout << "1. " << s1 << endl;
-			cout << "2. " << s2<< endl;
+			cout << "2. " << s2 << endl;
 			cout << "3. " << s3 << endl;
 			cout << endl;
 			cout << "\n Please enter your choice:";
 			cout << "---> ";
 
-			cin >> chosen;
-
+			cin >> choice;
+			chosen = (int)choice - (int)48;
 			switch (chosen)
 			{
-				case 1:
-					cout << "You selected  " << s1 << endl;
-					seatNumber = v1;
+			case 1:
+				cout << "You selected  " << s1 << endl;
+				seatNumber = v1;
 				break;
-				case 2:
-					cout << "You selected  " << s2 << endl;
-					seatNumber = v2;
+			case 2:
+				cout << "You selected  " << s2 << endl;
+				seatNumber = v2;
 				break;
-				case 3:
-					cout << "You selected  " << s3 << endl;
-					seatNumber = v3;					
+			case 3:
+				cout << "You selected  " << s3 << endl;
+				seatNumber = v3;
 				break;
-				default:
-					cerr << "Unknown command." << endl;
+			default:
+				cerr << "Unknown command." << endl;
+				return reserve_a_seat();
 				break;
 			}
-		break;
+			break;
 		case 2://condition
 			cout << "\nSeats Available:" << endl;
 			v1 = rand() % 30;         // v1 in the range 0 to 29
 			v2 = rand() % 30;         // v2 in the range 0 to 29
 			v3 = rand() % 30;         // v3 in the range 0 to 29
-			
-			sprintf_s(s1, "%d", v1);			
-			sprintf_s(s2, "%d", v2);			
+
+			sprintf_s(s1, "%d", v1);
+			sprintf_s(s2, "%d", v2);
 			sprintf_s(s3, "%d", v3);
 
 			cout << "1. " << s1 << endl;
@@ -154,7 +182,8 @@ namespace AirlineRes
 			cout << "\n Please enter your choice:";
 			cout << "---> ";
 
-			cin >> chosen;
+			cin >> choice;
+			chosen = (int)choice - (int)48;
 
 			switch (chosen)
 			{
@@ -172,17 +201,18 @@ namespace AirlineRes
 				break;
 			default:
 				cerr << "Unknown command." << endl;
+				return reserve_a_seat();
 				break;
 			}
-		break;
+			break;
 		case 3://condition
 			cout << "\nSeats Available:" << endl;
 			v1 = rand() % 20;         // v1 in the range 0 to 19
 			v2 = rand() % 20;         // v2 in the range 0 to 19
 			v3 = rand() % 20;         // v3 in the range 0 to 19
-			
-			sprintf_s(s1, "%d", v1);			
-			sprintf_s(s2, "%d", v2);			
+
+			sprintf_s(s1, "%d", v1);
+			sprintf_s(s2, "%d", v2);
 			sprintf_s(s3, "%d", v3);
 
 			cout << "1. " << s1 << endl;
@@ -192,7 +222,8 @@ namespace AirlineRes
 			cout << "\n Please enter your choice:";
 			cout << "---> ";
 
-			cin >> chosen;
+			cin >> choice;
+			chosen = (int)choice - (int)48;
 
 			switch (chosen)
 			{
@@ -210,13 +241,15 @@ namespace AirlineRes
 				break;
 			default:
 				cerr << "Unknown command." << endl;
+				return reserve_a_seat();
 				break;
 			}
-		break;		
+			break;
 		default://condition
-			cout << "Wrong input entered.\nTry again" << endl;
+			cout << "Incorrect input.\nPlease try again" << endl;
 			return reserve_a_seat();
 			break;
 		}
+		return sel;
 	}
 }

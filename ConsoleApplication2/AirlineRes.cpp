@@ -4,7 +4,6 @@
 #include "pch.h"
 #include <iostream>
 #include "passenger.h"
-#include "payment.h"
 
 using namespace std;
 
@@ -20,9 +19,7 @@ void reserveSeat(int x);
 int main()//main function
 {
 
-	class bookTicket ticket;//object for class bookTicket
-	class passenger pass;//object for class passenger
-	class payment pay;//object for class payment
+	class passenger Passenger;//object for class passenger
 	int n;//integer variable to be used for getting ticket number
 
 	while (true) 
@@ -36,23 +33,26 @@ int main()//main function
 			system("pause");
 			return 0;
 		case 1: //Display Flight Schedule
-			ticket.displayFlightSched();
+			Passenger.displayFlightSched();
 			cout << "\n\n";
 			system("pause");
 			break;
 		case 2:	//Flight Details	
-			ticket.flight_detail();
+			Passenger.flight_detail();
 			cout << "\n";
 			system("pause");
 			break;
 		case 3: //book a flight
 			system("CLS");			
-			pass.setTicketNo();
-			pass.p_detail();//function calls
-			pass.gender_check();
-			pay.pay_detail();
-			cout << "\n";
-			createfile(pass);//call to create file
+			n = Passenger.getTicket();
+			if (n > 0 && n < 8)
+			{
+				createfile(Passenger);//call to create file
+			}
+			else
+			{
+				cout << "You did not book a ticket\n\n";
+			}				
 			system("pause");
 			break;	
 		case 4:	//Display Passenger info		
@@ -62,7 +62,7 @@ int main()//main function
 			cout << "\n";
 			system("pause");
 			break;
-		case 5:	//Display ticket information
+		case 5:	//Display ticket info
 			cout << "\n\nPlease enter your ticket no.: ";
 			cin >> n;
 			checkticket(n);
@@ -95,7 +95,7 @@ int main()//main function
 
 	int displayMenu()
 	{
-		int selection;
+		char selection;
 
 		system("CLS");
 		cout << "\n\n \t\tWelcome To Airline Reservation System" << endl << endl;
@@ -106,15 +106,16 @@ int main()//main function
 		cout << "\t\t 2) Flight Details" << endl; 
 		cout << "\t\t 3) Book A Flight" << endl;
 		cout << "\t\t 4) Display Passenger Info" << endl;
-		cout << "\t\t 5) Display Ticket Information" << endl; 
+		cout << "\t\t 5) Display Ticket Info" << endl; 
 		cout << "\t\t 6) Reserve A Seat" << endl;
 		cout << "\t\t 7) Cancel Ticket" << endl;
 		cout << "\t\t 0) Quit" << endl;
 		cout << "\n \t\tPlease enter your choice: ";
 
 		cin >> selection;
+		int sel = (int)selection - (int)48;
 
-		return selection;
+		return sel;
 	}	
 
 	void createfile(passenger p)//file creation for domestic booking
@@ -201,25 +202,41 @@ int main()//main function
 
 	void reserveSeat(int x)
 	{
+		int seat;
 		passenger p;
-		ifstream fout("ticketFile.txt", ios::binary | ios::app);//for reading file
-		ofstream fin("ticketFile1.txt", ios::binary | ios::app);//for writing to a new file
-		fout.read((char *)&p, sizeof(p));//reading file
-		if (fout)
+		if (p.getSeatNumber() > 0)
 		{
-			if (p.getTicketNo() == x)//checking pnr
-			{
-				p.reserve_a_seat();//Reserve Seat
-				cout << "\nYour seat has been reserved" << endl;
-				fin.write((char *)&p, sizeof(p));//writing to file
-			}
+			cout << " You have already reserved a seat" << endl;
 		}
 		else
-			cout << "Ticket not found" << endl;
-		fout.close();//closing file
-		fin.close();//closing file
-		remove("ticketFile.txt");//deleting old file
-		rename("ticketFile1.txt", "ticketFile.txt");//renaming new file
+		{
+			ifstream fout("ticketFile.txt", ios::binary | ios::app);//for reading file
+			ofstream fin("ticketFile1.txt", ios::binary | ios::app);//for writing to a new file
+			fout.read((char *)&p, sizeof(p));//reading file
+			if (fout)
+			{
+				if (p.getTicketNo() == x)//checking pnr
+				{
+					seat = p.reserve_a_seat();//Reserve Seat
+					if (seat > 0 && seat < 4)
+					{
+						cout << "\nYour seat has been reserved" << endl;
+						fin.write((char *)&p, sizeof(p));//writing to file
+					}
+					else
+					{
+						cout << "You did not reserve a seat\n\n";
+					}
+				}
+			}
+			else
+				cout << "Ticket not found" << endl;
+			fout.close();//closing file
+			fin.close();//closing file
+			remove("ticketFile.txt");//deleting old file
+			rename("ticketFile1.txt", "ticketFile.txt");//renaming new file
+		}
+		
 	}
 
 	

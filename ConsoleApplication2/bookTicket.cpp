@@ -29,19 +29,19 @@ namespace AirlineRes
 		cout << "\2.SEA to SFO\tUnited Air     \t14:00\t\t16:30\t\tDaily\n";
 		cout << "\3.SEA to NYC\tSouth West Air \t18:00\t\t23:50\t\tDaily\n";
 		cout << "\4.SEA to DBX\tEmirates       \t08:05\t\t22:35\t\tDaily\n";
-		cout << "\4.SEA to LON\tBritish Air    \t10:00\t\t12:10\t\tDaily\n";
-		cout << "\4.SEA to FRA\tLufthansa      \t12:00\t\t21:40\t\tDaily\n";
-		cout << "\4.SEA to SIN\tSingapore Air  \t11:30\t\t22:25\t\tDaily\n";
+		cout << "\5.SEA to LON\tBritish Air    \t10:00\t\t12:10\t\tDaily\n";
+		cout << "\6.SEA to FRA\tLufthansa      \t12:00\t\t21:40\t\tDaily\n";
+		cout << "\1.SEA to SIN\tSingapore Air  \t11:30\t\t22:25\t\tDaily\n";
 	}
 
 	 void bookTicket::flight_detail() // function declaration and definition for flight detail
 	{
-		int selection;
+		char selection;
 
 		cout << endl;
-		cout << "-----------------------------------------------------------------" << endl;
-		cout << "       Select a Route No. to see details" << endl;
-		cout << "-----------------------------------------------------------------" << endl;
+		cout << "-----------------------------------------------------------------------" << endl;
+		cout << "           Select a Route No. to see details" << endl;
+		cout << "-----------------------------------------------------------------------" << endl;
 		cout << "Route Desc: \tRoute No.\tAirline:     \tDeparture:\tArrival:\n";
 		cout << "\1.SEA to LAX\t     (1)\tDelta Air      \t10:00\t\t13:00\n";
 		cout << "\2.SEA to SFO\t     (2)\tUnited Air     \t14:00\t\t16:30\n";
@@ -49,15 +49,20 @@ namespace AirlineRes
 		cout << "\4.SEA to DBX\t     (4)\tEmirates       \t08:05\t\t22:35\n";
 		cout << "\5.SEA to LON\t     (5)\tBritish Air    \t10:00\t\t12:10\n";
 		cout << "\6.SEA to FRA\t     (6)\tLufthansa      \t12:00\t\t21:40\n";
-		cout << "\4.SEA to SIN\t     (7)\tSingapore Air  \t11:30\t\t22:25\n";
+		cout << "\1.SEA to SIN\t     (7)\tSingapore Air  \t11:30\t\t22:25\n";
+		cout << "\n                  Enter 0 to Exit\n";
 		cout << endl;
 		cout << "\n Please enter your choice:";
 		cout << "---> ";
 
 		cin >> selection;
+		int sel = (int)selection - (int)48;
 
-		switch (selection) // switch case
+		switch (sel) // switch case
 		{
+		case 0:
+			cout << "You Have Exited " << endl;
+			break;
 		case 1://condition
 			cout << "\nDetails for Route selected:" << endl;
 			cout << "Route: SEA to LAX" << endl;
@@ -148,9 +153,9 @@ namespace AirlineRes
 		}
 	 }
 
-	void  bookTicket::select_flight() //function declaration and definition for selecting flight
+	int bookTicket::select_flight() //function declaration and definition for selecting flight
 	{
-		int selection;
+		char selection;
 
 		cout << endl;
 		cout << "********************************************************************************************" << endl;
@@ -164,15 +169,20 @@ namespace AirlineRes
 		cout << "\4.SEA to DBX\t     (4)\tEmirates       \t08:05\t\t22:35\t\t$1800.00\n";
 		cout << "\5.SEA to LON\t     (5)\tBritish Air    \t10:00\t\t12:10\t\t$1500.00\n";
 		cout << "\6.SEA to FRA\t     (6)\tLufthansa      \t12:00\t\t21:40\t\t$1550.00\n";
-		cout << "\4.SEA to SIN\t     (7)\tSingapore Air  \t11:30\t\t22:25\t\t$1700.00\n";
+		cout << "\1.SEA to SIN\t     (7)\tSingapore Air  \t11:30\t\t22:25\t\t$1700.00\n";
+		cout << "\n                  Enter 0 to Exit\n";
 		cout << endl;
 		cout << "\n Please enter your choice:";
 		cout << "---> ";
 
-		cin >> selection;			
+		cin >> selection;
+		int sel = (int)selection - (int)48;
 				
-		switch (selection) // switch case
+		switch (sel) // switch case
 		{
+		case 0:
+			cout << "You Have Exited Ticket Booking System" << endl;
+			break;
 		case 1://condition
 			cout << "\nRoute selected:" << endl;
 			cout << "Route:    \tAirline:       \tDeparture:\tArrival:\tPrice:\n";
@@ -182,6 +192,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "10:00"); //copy to string
 			strcpy_s(arrivalTime, "13:00");// copy to string
 			strcpy_s(price, "$600.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 2://condition
 			cout << "\nRoute selected:" << endl;
@@ -192,6 +205,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "14:00"); //copy to string
 			strcpy_s(arrivalTime, "16:30");// copy to string
 			strcpy_s(price, "$650.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 3://condition
 			cout << "\nRoute selected:" << endl;
@@ -202,6 +218,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "18:00"); //copy to string
 			strcpy_s(arrivalTime, "23:50");// copy to string
 			strcpy_s(price, "$700.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 4://condition
 			cout << "\nRoute selected:" << endl;
@@ -212,6 +231,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "08:05"); //copy to string
 			strcpy_s(arrivalTime, "22:35");// copy to string
 			strcpy_s(price, "$1800.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 5://condition
 			cout << "\nRoute selected:" << endl;
@@ -222,6 +244,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "10:00"); //copy to string
 			strcpy_s(arrivalTime, "12:10");// copy to string
 			strcpy_s(price, "$1500.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 6://condition
 			cout << "\nRoute selected:" << endl;
@@ -232,6 +257,9 @@ namespace AirlineRes
 			strcpy_s(departureTime, "12:00"); //copy to string
 			strcpy_s(arrivalTime, "21:40");// copy to string
 			strcpy_s(price, "$1550.00");// copy to string
+			cout << "\nEnter Date Of Journey(MM DD YYYY)." << "Please enter a valid date." << endl;
+			cin >> mm >> dd >> yyyy;
+			setTicketNo();
 			break;
 		case 7://condition
 			cout << "\nRoute selected:" << endl;
@@ -247,6 +275,7 @@ namespace AirlineRes
 			cout << "Wrong input entered.\nTry again" << endl;
 			return select_flight();
 		}
+		return sel;
 	}
 
 	

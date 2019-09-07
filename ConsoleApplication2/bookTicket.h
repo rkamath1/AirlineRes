@@ -16,6 +16,6 @@ namespace AirlineRes
 		int getTicketNo();
 		void flight_detail(); // function declaration and definition for domestic journey
 		void displayFlightSched();
-		void  select_flight();
-	};;
+		int select_flight();
+	};
 }
